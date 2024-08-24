@@ -20,7 +20,7 @@ function pickRandomNum() {
 
 function play() {
   chance--;
-  chanceArea.textContent = `남은 기회 : ${chance}`;
+  chanceArea.textContent = `${chance} chances left`;
   // console.log("게임시작");
   let userValue = userInput.value;
   if (userValue < computerNum) {
@@ -30,7 +30,7 @@ function play() {
     resultArea.textContent = "Down !!!! ⬇️";
     console.log("DOWN");
   } else {
-    resultArea.textContent = "정답 !!! 🥳";
+    resultArea.textContent = "Correct !!! 🥳";
     console.log("정답");
   }
 
@@ -40,15 +40,15 @@ function play() {
 
   if (gameOver == true) {
     playButton.disabled = true;
-    resultArea.textContent = "기회를 모두 소진했습니다😓";
-    chanceArea.textContent = `정답은 ${computerNum}`;
+    resultArea.textContent = "Used up all your chances, sorry !😓";
+    chanceArea.textContent = `The answer was ${computerNum}`;
   }
 }
 
 function reset() {
   userInput.value = ""; // 입력했던 번호들 초기화
   pickRandomNum(); // 새로운 번호 생성
-  resultArea.textContent = "게임을 다시 시작합니다";
+  resultArea.textContent = "Let the games begin !";
   chance = 5;
-  chanceArea.textContent = "기회가 5번 있습니다";
+  chanceArea.textContent = "You've got 5 chances";
 }
