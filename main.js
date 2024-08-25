@@ -13,6 +13,11 @@ resetButton.addEventListener("click", reset);
 userInput.addEventListener("focus", () => {
   userInput.value = "";
 });
+userInput.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    play();
+  }
+});
 
 pickRandomNum();
 
