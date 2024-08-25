@@ -10,6 +10,9 @@ let gameOver = false;
 
 playButton.addEventListener("click", play);
 resetButton.addEventListener("click", reset);
+userInput.addEventListener("focus", () => {
+  userInput.value = "";
+});
 
 pickRandomNum();
 
@@ -31,14 +34,16 @@ function play() {
     console.log("DOWN");
   } else {
     resultArea.textContent = "Correct !!! 🥳";
-    console.log("정답");
+    playButton.disabled = true;
+    chanceArea.textContent = `The answer was ${computerNum}`;
   }
 
   if (chance < 1) {
     gameOver = true;
   }
 
-  if (gameOver == true) {
+  // 게임이 끝났다면
+  if (gameOver) {
     playButton.disabled = true;
     resultArea.textContent = "Used up all your chances, sorry !😓";
     chanceArea.textContent = `The answer was ${computerNum}`;
@@ -51,4 +56,5 @@ function reset() {
   resultArea.textContent = "Let the games begin !";
   chance = 5;
   chanceArea.textContent = "You've got 5 chances";
+  playButton.disabled = false;
 }
