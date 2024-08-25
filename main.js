@@ -14,7 +14,7 @@ userInput.addEventListener("focus", () => {
   userInput.value = "";
 });
 userInput.addEventListener("keyup", (event) => {
-  if (event.keyCode === 13) {
+  if (event.key === "Enter") {
     play();
   }
 });
