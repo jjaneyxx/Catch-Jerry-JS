@@ -27,10 +27,18 @@ function pickRandomNum() {
 }
 
 function play() {
+  let userValue = userInput.value;
+
+  // 유저가 1보다 작거나 10보다 큰 값을 입력하는 경우
+  if (userValue < 1 || userValue > 10) {
+    resultArea.textContent = "Hey";
+    console.log("1~10 이내 숫자 입력하기");
+    return; // 함수를 종료
+  }
+
   chance--;
   chanceArea.textContent = `${chance} chances left`;
-  // console.log("게임시작");
-  let userValue = userInput.value;
+
   if (userValue < computerNum) {
     resultArea.textContent = "UP !!!!! ⬆️";
     console.log("UP");
