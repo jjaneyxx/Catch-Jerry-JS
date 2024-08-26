@@ -7,6 +7,7 @@ let chanceArea = document.getElementById("chance-area");
 
 let chance = 5; // 기회
 let gameOver = false;
+let userInputArr = [];
 
 playButton.addEventListener("click", play);
 resetButton.addEventListener("click", reset);
@@ -31,20 +32,28 @@ function play() {
 
   // 유저가 1보다 작거나 10보다 큰 값을 입력하는 경우
   if (userValue < 1 || userValue > 10) {
-    resultArea.textContent = "Hey";
-    console.log("1~10 이내 숫자 입력하기");
+    resultArea.textContent = "The number should be between 1 and 10";
     return; // 함수를 종료
   }
+
+  // 입력한 값이 배열에 있는지 확인
+  if (userInputArr.includes(userValue)) {
+    // 이미 이전에 입력한 값을 또 입력함
+    resultArea.textContent = "Enter a number different from the previous input";
+    return;
+  }
+
+  // 입력한 값을 배열에 push
+  userInputArr.push(userValue);
+  console.log(`입력값 : ${userInputArr}`);
 
   chance--;
   chanceArea.textContent = `${chance} chances left`;
 
   if (userValue < computerNum) {
     resultArea.textContent = "UP !!!!! ⬆️";
-    console.log("UP");
   } else if (userValue > computerNum) {
     resultArea.textContent = "Down !!!! ⬇️";
-    console.log("DOWN");
   } else {
     resultArea.textContent = "Correct !!! 🥳";
     playButton.disabled = true;
@@ -70,4 +79,5 @@ function reset() {
   chance = 5;
   chanceArea.textContent = "You've got 5 chances";
   playButton.disabled = false;
+  userInputArr = []; // 입력값이 담긴 배열도 초기화
 }
