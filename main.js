@@ -50,6 +50,7 @@ function play() {
   userInputArr.push(userValue);
   console.log(`입력값 : ${userInputArr}`);
 
+  console.log(`현재 기회 : ${chance}`);
   chance--;
   chanceArea.textContent = `${chance} chances left`;
 
@@ -73,7 +74,7 @@ function play() {
   // 게임이 끝났다면
   if (gameOver) {
     playButton.disabled = true;
-    resultArea.textContent = "Used up all your chances, sorry !😓";
+    resultArea.textContent = "Used up all your chances 😓";
     gameImage.src = "./images/lose.gif";
     chanceArea.textContent = `The answer was ${computerNum}`;
   }
@@ -88,4 +89,5 @@ function reset() {
   userInputArr = []; // 입력값이 담긴 배열도 초기화
   pickRandomNum(); // 새로운 번호 생성
   gameImage.src = "./images/main.gif";
+  gameOver = false;
 }
